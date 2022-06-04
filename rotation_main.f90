@@ -11,4 +11,7 @@ cccc = 1
 
 call savedata(cccc)
 
+call integral
+
+
 end

@@ -32,23 +32,9 @@ do ix = 1, dimx0
   do iiy = 1, subs
   do iiz = 1, subs
 
-! the particle is at float(dimx0)*delta/2.0
-! the cell is at (float(ix)-0.5)*delta
-!displace it by Rell 
-!  v(1) = (float(ix))*delta + (float(iix)-0.5)/float(subs)*delta - float(dimx0)*delta/2.0
-!  v(2) = (float(iy))*delta + (float(iiy)-0.5)/float(subs)*delta  - float(dimy0)*delta/2.0
-!  v(3) = (float(iz))*delta + float(iiz-1)/float(subs-1)*delta - float(dimz0)*delta/2.0
-
-
   v(1) = (float(ix)-1.)*delta + (float(iix)-0.5)/float(subs)*delta - float(dimx0)*delta/2.0
   v(2) = (float(iy)-1.)*delta + (float(iiy)-0.5)/float(subs)*delta  - float(dimy0)*delta/2.0
   v(3) = (float(iz)-1.)*delta + float(iiz-1)/float(subs-1)*delta - float(dimz0)*delta/2.0
-
-
-
-!  v(1) = (float(ix)-0.5)*delta + (float(iix)-0.5)/float(subs)*delta - float(dimx0)*delta/2.0
-!  v(2) = (float(iy)-0.5)*delta + (float(iiy)-0.5)/float(subs)*delta  - float(dimy0)*delta/2.0
-!  v(3) = (float(iz))*delta + float(iiz-1)/float(subs-1)*delta - float(dimz0)*delta/2.0
 
   vr = MATMUL(rotmatCO(:,:,i),v)
 
@@ -66,10 +52,10 @@ do ix = 1, dimx0
     if((jz.ge.1).and.(jz.le.dimz)) then
 
      avpol(jx,jy,jz) = avpol(jx,jy,jz)+avpol0(ix,iy,iz)/float(subs**3)
-     avpoli(jx,jy,jz,i) = avpol0(ix,iy,iz)/float(subs**3)
+     avpoli(jx,jy,jz,i) =  avpoli(jx,jy,jz,i) +  avpol0(ix,iy,iz)/float(subs**3)
 
      volprot(jx,jy,jz) = volprot(jx,jy,jz)+volprot0(ix,iy,iz)/float(subs**3)
-     volproti(jx,jy,jz,i) = volprot0(ix,iy,iz)/float(subs**3)
+     volproti(jx,jy,jz,i) = volproti(jx,jy,jz,i) + volprot0(ix,iy,iz)/float(subs**3)
 
     endif
    endif

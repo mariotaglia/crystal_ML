@@ -1,6 +1,6 @@
 TARGET = rotation_ML
 
-SRC = modules.f90 parser.f90 rotation_main.f90 allocateellCO.f90 allocation.f90 init.f90 fixdata.f90 savetodisk.f90 inverse.f90
+SRC = modules.f90 parser.f90 rotation_main.f90 allocateellCO.f90 allocation.f90 init.f90 fixdata.f90 savetodisk.f90 inverse.f90 integral.f90
 
 HOST=$(shell hostname)
 $(info HOST is ${HOST})
@@ -10,7 +10,7 @@ $(info HOST is ${HOST})
 
 # some definitions
 SHELL = /bin/bash
-FFLAGS= -fbacktrace -fbounds-check # -O3
+FFLAGS= -O3 #-fbacktrace -fbounds-check # -O3
 
 GIT_VERSION := $(shell git describe --abbrev=6 --dirty --always --tags)
 GFLAGS=-cpp -D_VERSION=\"$(GIT_VERSION)\"

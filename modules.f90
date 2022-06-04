@@ -1,5 +1,6 @@
 module system 
 real*8 delta
+real*8 vol
 integer  dimx, dimx0
 integer  dimy, dimy0
 integer  dimz, dimz0
@@ -27,28 +28,6 @@ real*8, allocatable :: rotmatCO(:,:,:)
 
 end module
 
-module COrotMod
-real*8, allocatable :: klocta1(:)
-real*8, allocatable :: klocta2(:)
-real*8, allocatable :: klocta3(:)
-real*8, allocatable :: klocta4(:)
-real*8, allocatable :: klocta1b(:)
-real*8, allocatable :: klocta2b(:)
-real*8, allocatable :: klocta3b(:)
-real*8, allocatable :: klocta4b(:)
-real*8, allocatable :: klcubex1(:)
-real*8, allocatable :: klcubex2(:)
-real*8, allocatable :: klcubey1(:)
-real*8, allocatable :: klcubey2(:)
-real*8, allocatable :: klcubez1(:)
-real*8, allocatable :: klcubez2(:)
-real*8, allocatable :: plane1(:,:)
-real*8, allocatable :: plane2(:,:)
-real*8, allocatable :: plane3(:,:)
-real*8, allocatable :: plane4(:,:)
-real*8, allocatable :: plane5(:,:)
-real*8, allocatable :: plane6(:,:)
-real*8, allocatable :: plane7(:,:)
+module integrals
+integer maxn ! maximum exponent used to calculate integrals
 end module
-
-

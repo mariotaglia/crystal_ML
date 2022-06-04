@@ -47,7 +47,7 @@ integer ix,iy,iz, im
 
 ! Particula, 2
   title = 'avpr2'
-  temp(:,:,:) =  volproti(:,:,:,1)
+  temp(:,:,:) =  volproti(:,:,:,2)
   call savetodisk(temp, title, cccc)
 
 end

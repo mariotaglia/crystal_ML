@@ -1,6 +1,7 @@
 
 subroutine readinput
 
+use integrals
 use ellipsoid
 use system
 use results
@@ -85,6 +86,11 @@ do while (ios == 0)
    read(buffer, *, iostat=ios) dimz0
    write(stdout,*) 'parser:','Set ',trim(label),' = ',trim(buffer)
 
+ case ('maxn')
+   read(buffer, *, iostat=ios) maxn
+   write(stdout,*) 'parser:','Set ',trim(label),' = ',trim(buffer)
+
+
 
 case('particles')    
    NNN = 2 ! only two particles 
@@ -111,6 +117,9 @@ endselect
 endif
 
 enddo
+
+vol = float(dimx*dimy*dimz)*(delta**3)
+
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
