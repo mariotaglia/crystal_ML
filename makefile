@@ -1,6 +1,6 @@
 TARGET = rotation_ML
 
-SRC = modules.f90 parser.f90 rotation_main.f90 allocateellCO.f90 allocation.f90 init.f90 fixdata.f90 savetodisk.f90
+SRC = modules.f90 parser.f90 rotation_main.f90 allocateellCO.f90 allocation.f90 init.f90 fixdata.f90 savetodisk.f90 inverse.f90
 
 HOST=$(shell hostname)
 $(info HOST is ${HOST})
