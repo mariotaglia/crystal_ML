@@ -14,7 +14,7 @@ integer, parameter :: fh = 15
 integer ios
 integer line, linemax
 integer i, j
-character(len=50) :: filename = 'DEFINITIONS.txt'
+character(len=50) :: filename = 'DEFINITIONSML.txt'
 character basura
 integer ndi
 real*8 ndr
