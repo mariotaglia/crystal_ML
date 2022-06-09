@@ -1,6 +1,6 @@
 
 subroutine readinput
-
+use limits
 use integrals
 use ellipsoid
 use system
@@ -13,11 +13,11 @@ integer pos
 integer, parameter :: fh = 15
 integer ios
 integer line, linemax
-integer i, j
+integer i, j, jj
 character(len=50) :: filename = 'DEFINITIONSML.txt'
 character basura
 integer ndi
-real*8 ndr
+real(wp) ndr
 integer stdout
  
 ! not defined variables, change if any variable can take the value
@@ -57,6 +57,9 @@ do while (ios == 0)
    read(buffer, *, iostat=ios) vtkflag
    write(stdout,*) 'parser:','Set ',trim(label),' = ',trim(buffer)
 
+ case ('phicutoff')
+   read(buffer, *, iostat=ios) phicutoff
+   write(stdout,*) 'parser:','Set ',trim(label),' = ',trim(buffer)
 
  case ('dimx')
    read(buffer, *, iostat=ios) dimx
@@ -95,20 +98,28 @@ do while (ios == 0)
 case('particles')    
    NNN = 2 ! only two particles 
  
+     read(fh, *) basura
+     read(fh, *) Ndata
+     write(stdout,*)'Number of cases', Ndata
+
    call allocateellCO
 
      read(fh, *) basura
      do j = 1, NNN
         read(fh, *) Rellf(1,j), Rellf(2,j), Rellf(3,j)
      write(stdout,*) 'parser:','Set particle',j,'pos to',  Rellf(1,j), Rellf(2,j), Rellf(3,j)
-     enddo
+    enddo
 
+     do jj = 1, Ndata
      read(fh, *) basura
      do j = 1, NNN
-      read(fh, *) rotmatCO(1,1,j), rotmatCO(1,2,j), rotmatCO(1,3,j)
-      read(fh, *) rotmatCO(2,1,j), rotmatCO(2,2,j), rotmatCO(2,3,j)
-      read(fh, *) rotmatCO(3,1,j), rotmatCO(3,2,j), rotmatCO(3,3,j)
+      read(fh, *) rotmatCO(1,1,j,jj), rotmatCO(1,2,j,jj), rotmatCO(1,3,j,jj)
+      read(fh, *) rotmatCO(2,1,j,jj), rotmatCO(2,2,j,jj), rotmatCO(2,3,j,jj)
+      read(fh, *) rotmatCO(3,1,j,jj), rotmatCO(3,2,j,jj), rotmatCO(3,3,j,jj)
      enddo
+     read(fh, *) title_data(jj)
+     enddo
+     
 
 !    call COrotation
 

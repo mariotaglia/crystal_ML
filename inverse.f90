@@ -13,11 +13,13 @@ subroutine inverse(a,c,n)
 ! the original matrix a(n,n) will be destroyed 
 ! during the calculation
 !===========================================================
+use bspline_kinds_module, only: wp, ip
+
 implicit none 
 integer n
-double precision a(n,n), c(n,n)
-double precision L(n,n), U(n,n), b(n), d(n), x(n)
-double precision coeff
+real(wp) :: a(n,n), c(n,n)
+real(wp) :: L(n,n), U(n,n), b(n), d(n), x(n)
+real(wp) coeff
 integer i, j, k
 
 ! step 0: initialization for matrices L and U and b

@@ -1,15 +1,26 @@
 subroutine loaddata
 use results
+use bspline_kinds_module, only: wp, ip
 implicit none
+integer ix,iy,iz
 open (unit=8, file='propol.out', form='unformatted')
-read(8)avpol0
-read(8)volprot0
+read(8)avpol0d
+read(8)volprot0d
 close(8)
+do ix = 1, dimx0
+do iy = 1, dimy0
+do iz = 1, dimz0
+volprot0(ix,iy,iz) = real(volprot0d(ix,iy,iz),wp)
+avpol0(ix,iy,iz) = real(avpol0d(ix,iy,iz),wp)
+enddo
+enddo
+enddo
 end
 
 
 
 subroutine savedata(cccc)
+use bspline_kinds_module, only: wp, ip
 use system
 use results
 use ellipsoid
@@ -18,8 +29,8 @@ implicit none
 integer cccc
 character*20 filename
 character*5  title
-real*8 temp(dimx,dimy,dimz)
-real*8 sumpol
+real(wp) temp(dimx,dimy,dimz)
+real(wp) sumpol
 integer ix,iy,iz, im
 
 ! Polimero, todo

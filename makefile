@@ -1,11 +1,11 @@
 TARGET = rotation_ML
 
-SRC = modules.f90 parser.f90 rotation_main.f90 allocateellCO.f90 allocation.f90 init.f90 fixdata.f90 savetodisk.f90 inverse.f90 integral.f90
+SRC = bspline_kinds_module.f90 bspline_module.f90 bspline_sub_module.f90 bspline_oo_module.f90 modules.f90 parser.f90 rotation_main.f90 allocateellCO.f90 allocation.f90 init.f90 fixdata.f90 savetodisk.f90 inverse.f90 findlimits.f90 spline.f90
 
 HOST=$(shell hostname)
 $(info HOST is ${HOST})
 
-#LFLAGS = -lm /usr/lib/x86_64-linux-gnu/librt.so  -L/usr/local/lib  -lsundials_fkinsol -lsundials_kinsol -lsundials_fnvecserial -lsundials_nvecserial ${LIBS} -Wl,-rpath,/usr/local/lib
+#LFLAGS = -L/./libbspline-fortran.so
 
 
 # some definitions

@@ -1,9 +1,11 @@
 subroutine allocateellCO
-
+use splines
+use system
 use ellipsoid
+implicit none
 ! cuboctahedron
 ALLOCATE (Rellf(3,NNN))
 ALLOCATE (Rell(3,NNN))
-ALLOCATE (rotmatCO(3,3,NNN))
-
+ALLOCATE (rotmatCO(3,3,NNN,Ndata))
+ALLOCATE (title_data(Ndata))
 end subroutine

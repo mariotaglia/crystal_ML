@@ -4,15 +4,15 @@ use system
 implicit none
 
 integer ix, iy, iz, jx, jy, jz
-real*8 array(dimx, dimy, dimz)
-real*8 arraytemp(dimx, dimy, dimz)
-real*8 arrayz(dimz)
+real(wp) array(dimx, dimy, dimz)
+real(wp) arraytemp(dimx, dimy, dimz)
+real(wp) arrayz(dimz)
 integer counter
 character*5 title
 character*6 titlez
 character*21 filename, tempc
 real*4 singlepres
-real*8 x(3), v(3)
+real(wp) x(3), v(3)
 
 !-----  coordenadas -------------------------
 ! Variables
